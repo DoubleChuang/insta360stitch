@@ -1,0 +1,20 @@
+{
+  "name": "insta360-local-sdk",
+  "dockerComposeFile": [
+    "../local-sdk/docker-compose.yaml"
+  ],
+  "service": "stitch-dev",
+  "workspaceFolder": "/workspace/insta360stitch",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": true,
+  "postCreateCommand": "bash -lc 'ls /opt/insta360/include/ins_stitcher.h >/dev/null && echo MediaSDK headers ready'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+# C++ build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dylib
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment variables / secrets
+.env
+.env.*
+*.env
+client_secret*.json
+*token*
+*secret*
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
+
+# Test data / large files
+data/
+output/
+*.mp4
+*.insv
+*.lrv
+*.insp
+Linux_CameraSDK-*.zip
+
+# SDK residuals
+sdk/__MACOSX/
+sdk/**/.DS_Store
+sdk/Linux_CameraSDK-*/CameraSDK-*.tar.gz
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.backup

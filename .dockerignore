@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.mp4
+*.insv
+*.lrv
+data/
+output/
+sdk/__MACOSX/
+sdk/**/.DS_Store
+sdk/Linux_CameraSDK-2.1.1_MediaSDK-3.1.1/CameraSDK-*.tar.gz
+Linux_CameraSDK-2.1.1_MediaSDK-3.1.1.zip

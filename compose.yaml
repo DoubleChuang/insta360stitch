@@ -1,0 +1,29 @@
+name: insta360-stitch
+
+services:
+  stitch-base:
+    image: insta360-stitch-base:latest
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+      args:
+        MEDIA_SDK_DEB: ${MEDIA_SDK_DEB:-}
+        MEDIA_SDK_DEB_URL: ${MEDIA_SDK_DEB_URL:-https://github.com/MapMindAI/EasyGaussianSplatting/releases/download/v1/Insta360SDK.deb}
+
+  stitch:
+    image: insta360-stitch:latest
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: ${BASE_IMAGE:-compose-base}
+      additional_contexts:
+        compose-base: service:stitch-base
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,graphics,video
+    gpus: all
+    volumes:
+      - ./data:/data

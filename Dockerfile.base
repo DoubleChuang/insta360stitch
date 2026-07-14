@@ -1,0 +1,33 @@
+FROM nvidia/cuda:12.2.2-devel-ubuntu22.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG MEDIA_SDK_DEB=
+ARG MEDIA_SDK_DEB_URL=https://github.com/MapMindAI/EasyGaussianSplatting/releases/download/v1/Insta360SDK.deb
+
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    INSTA360_MODEL_ROOT=/opt/insta360/models
+
+WORKDIR /opt/insta360-stitch
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        bash \
+        build-essential \
+        ca-certificates \
+        curl \
+        ffmpeg \
+        file \
+        findutils \
+        libimage-exiftool-perl \
+        locales \
+        python3 \
+        python3-venv && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY sdk/ /tmp/sdk/
+COPY scripts/install_media_sdk.sh /usr/local/bin/install_media_sdk.sh
+
+RUN chmod +x /usr/local/bin/install_media_sdk.sh && \
+    /usr/local/bin/install_media_sdk.sh "${MEDIA_SDK_DEB}" "${MEDIA_SDK_DEB_URL}" && \
+    rm -rf /tmp/sdk

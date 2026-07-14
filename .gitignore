@@ -49,10 +49,9 @@ output/
 *.insp
 Linux_CameraSDK-*.zip
 
-# SDK residuals
-sdk/__MACOSX/
-sdk/**/.DS_Store
-sdk/Linux_CameraSDK-*/CameraSDK-*.tar.gz
+# SDK (large files, not tracked)
+sdk/
+local-sdk/
 
 # Temp files
 *.tmp
